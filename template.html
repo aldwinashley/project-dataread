@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }} - Reading Progress Report</title>
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        th, td {
+            border: 1px solid #444;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #135;
+            color: #fff;
+        }
+        td.label {
+            background-color: #135;
+            font-weight: bold;
+            width: 35%;
+        }
+        .Evident {
+            background-color: #165016;
+        }
+        .Not\ Evident, .Needs\ Improvement {
+            background-color: #502222;
+        }
+        h2 {
+            background-color: #222;
+            padding: 8px;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ name }} - Reading Progress Report</h1>
+    <table>
+        <tr><td class="label">LRN</td><td>{{ lrn }}</td></tr>
+        <tr><td class="label">Age</td><td>{{ age }}</td></tr>
+        <tr><td class="label">Gender</td><td>{{ gender }}</td></tr>
+        <tr><td class="label">Grade & Section</td><td>{{ grade }}</td></tr>
+        <tr><td class="label">Phil-IRI Score (Pre-Test)</td><td>{{ pre_score }}</td></tr>
+        <tr><td class="label">Phil-IRI Score (Post-Test)</td><td>{{ post_score }}</td></tr>
+        <tr><td class="label">Word Reading Score (Accuracy)</td><td>{{ passage }}</td></tr>
+        <tr><td class="label">Oral Reading Score (Comprehension)</td><td>{{ comprehension }}</td></tr>
+        <tr><td class="label">Oral Reading Rate (Speed)</td><td>{{ speed }}</td></tr>
+        <tr><td class="label">Overall Reading Profile</td><td>{{ profile }}</td></tr>
+    </table>
+
+    <h2>Beginning Reading Skills</h2>
+    <table>
+        <tr><th>Skill</th><th>Level</th></tr>
+        {% for skill, level in beginning %}
+        <tr><td>{{ skill }}</td><td class="{{ level|replace(' ', '\ ') }}">{{ level }}</td></tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr><td class="label">Recommendations</td><td>{{ rec_general }}</td></tr>
+    </table>
+
+    <h2>Comprehension Skills</h2>
+    <table>
+        <tr><th>Skill</th><th>Level</th></tr>
+        {% for skill, level in comprehension %}
+        <tr><td>{{ skill }}</td><td class="{{ level|replace(' ', '\ ') }}">{{ level }}</td></tr>
+        {% endfor %}
+    </table>
+    <table>
+        <tr><td class="label">Recommendations</td><td>{{ rec_comprehension }}</td></tr>
+        <tr><td class="label">Assessed by</td><td>{{ assessor }}</td></tr>
+        <tr><td class="label">Date Updated</td><td>{{ date_updated }}</td></tr>
+    </table>
+</body>
+</html>
